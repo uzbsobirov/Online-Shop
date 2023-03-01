@@ -16,7 +16,7 @@
             <input style="border: 1px solid blue;" type="search" class="form-control rounded" placeholder="{% trans 'Search' %}" aria-label="Search" aria-describedby="search-addon" name="search" />
             <button type="button" class="btn btn-outline-primary"><ion-icon name="search-outline"></ion-icon></button>
       </div>
-      <button type="button" class="btn btn-primary"><a href="#" style="color: white; text-decoration: none;">Add new product</a></button>
+      <button type="button" class="btn btn-primary"><a href="{% url 'main:addproduct' %}" style="color: white; text-decoration: none;">Add new product</a></button>
     </div>
 
     <div class="col-md-6 mt-6" style="width:100%;display: flex;">

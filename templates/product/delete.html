@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container" style="padding-top: 50px; text-align:center;">
+    <div class="col-md-12">
+        <h2 style="color:black;">{% trans 'Confirmation' %}</h2>
+    <br>
+    <h3 style="margin-bottom: 30px;">Do you want to delete {{ product.name }} on {{ pk }} id?</h3>
+    <button style="margin-right: 30px;" type="button" class="btn btn-primary"><a href="{% url 'delete_confirm' p_key %}" style="text-decoration: none; color:black ;">Continue</a></button> <button type="button" class="btn btn-light" style="background-color: rgba(126, 126, 126, 0.574);"><a href="{% url 'main:productview' %}">Close</a></button>
+    </div>
+</div>
+{% endblock content %}
