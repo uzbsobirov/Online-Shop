@@ -39,7 +39,7 @@
               <tbody>
                 <tr>
                   <td>{{ item.id }}</td>
-                  <td><a style="text-decoration: none; color: black;" href="#">{{ item.name }}</a></td>
+                  <td><a style="text-decoration: none; color: black;" href="{% url 'main:editproduct' item.id %}">{{ item.name }}</a></td>
                   <td><a style="text-decoration: none ;color: black;" href="#">{{ item.product_id }}</a></td>
                   <td><a style="text-decoration: none; color: black;" href="#">{{ item.category }}</a></td>
                   <td><a style="text-decoration: none; color: black;" href="#">{{ item.description }}</a></td>
@@ -49,16 +49,20 @@
                         <td><p style="text-align: center; border: 1px solid rgb(132, 125, 125, 0.674);background-color:rgba(132, 125, 125, 0.674) ;border-radius: 20px;">Inactive</p></td>
                   {% endif %}
                   <td>{{ item.price }}$</td>
-                  <td><button type="submit" style="color: blue; text-decoration: none;"><a href="">Edit</a></button></td>
+                  <td><button type="submit" style="color: blue; text-decoration: none;"><a href="{% url 'main:editproduct' item.id %}">Edit</a></button></td>
                   <td><button type="submit" style=" text-decoration: none;"><a href="{% url 'main:deleteproduct' item.id %}">Delete</a></button></td>
                   
                 </tr>
               </tbody>
             </div>
+            
           {% endfor %}
         </table>
+        
     </div>
-
+    {% include 'paginations.html' with page=products %}
+    
 </div>
+
 
 {% endblock content %}
