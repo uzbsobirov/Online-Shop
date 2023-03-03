@@ -10,5 +10,7 @@ urlpatterns = [
     # Add New Product
     path('add_product/', AddProduct.as_view(), name='addproduct'),
     # Delete Product
-    path('delete/<int:pk>/', DeleteProduct.as_view(), name='deleteproduct')
+    path('delete/<int:pk>/', DeleteProduct.as_view(), name='deleteproduct'),
+    #Confirm Delete Product
+    path('confirm/delete/<int:pk>/', ConfirmDeleteProduct.as_view(), name='confirmdeleteproduct')
 ]

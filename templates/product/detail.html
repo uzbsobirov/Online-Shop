@@ -49,8 +49,9 @@
                         <td><p style="text-align: center; border: 1px solid rgb(132, 125, 125, 0.674);background-color:rgba(132, 125, 125, 0.674) ;border-radius: 20px;">Inactive</p></td>
                   {% endif %}
                   <td>{{ item.price }}$</td>
-                  <td><button type="button" class="btn btn-primary" style="margin-right: 3px;"><a style="text-decoration: none; color: white;" href="#"><ion-icon name="create-outline"></ion-icon></a></button></td>
-                  <td> <button  type="button" class="btn btn-danger"><a style="text-decoration: none; color: white" href="#"><ion-icon name="close-outline"></ion-icon></a></button></td>
+                  <td><button type="submit" style="color: blue; text-decoration: none;"><a href="">Edit</a></button></td>
+                  <td><button type="submit" style=" text-decoration: none;"><a href="{% url 'main:deleteproduct' item.id %}">Delete</a></button></td>
+                  
                 </tr>
               </tbody>
             </div>
