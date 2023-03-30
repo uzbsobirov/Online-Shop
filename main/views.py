@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views import View
 from .models import *
-from .forms import ProductForm
+from .forms import ProductForm, CategoryForm
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 
 # This is base page 
@@ -85,3 +85,41 @@ class EditProduct(View):
             form.save()
             return redirect('main:productview')
         return render(request=request, template_name=self.template_name, context=context)
+
+
+# <------------All of Category---------------->
+
+class CategoryView(View):
+    def get(self, request, *args, **kwargs):
+        # We must get all items of Category model with all() method
+        categories = Category.objects.all().order_by('-date_created')
+        paginator = Paginator(categories, 5)
+        page = request.GET.get('page')
+
+        try:
+            categories = paginator.page(page)
+        except PageNotAnInteger:
+            categories = paginator.page(1)
+        except EmptyPage:
+            categories = paginator.page(paginator.num_pages)
+        # and we must give context for frontend
+        return render(request=request, template_name='category/categories.html', context={'categories': categories, 'page': page})
+
+
+# Add function for Category
+class AddCategory(View):
+    template_name = 'category/add_category.html'
+
+    # get function
+    def get(self, request, *args, **kwargs):
+        form = CategoryForm()
+        return render(request=request, template_name=self.template_name, context={'form': form})
+    
+    # post function
+    def post(self, request, *args, **kwargs):
+        form = CategoryForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('main:categoriesview')
+        else:
+            return render(request=request, template_name=self.template_name, context={'form': form})
